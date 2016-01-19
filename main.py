@@ -24,7 +24,9 @@ class MainHandler(webapp2.RequestHandler):
 class SoloHackerHandler(webapp2.RequestHandler):
     def post(self):
         solo_name = self.request.get("soloname")
-        self.response.write("I recieved a request to send", solo_name+'s')
+        self.response.write("I recieved a request to send ")
+        self.response.write(solo_name)
+        self.response.write("With these traits: ")
 
 
 app = webapp2.WSGIApplication([
