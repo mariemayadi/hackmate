@@ -12,7 +12,7 @@ handlers:
 - url: .*
   script: main.app
 
-  - url: /templates
+- url: /templates
   static_dir: templates/
 
 libraries:
