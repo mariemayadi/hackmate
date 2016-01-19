@@ -15,6 +15,7 @@
 # limitations under the License.
 #
 import webapp2
+import logging
 import re
 
 class MainHandler(webapp2.RequestHandler):
@@ -25,15 +26,15 @@ class MainHandler(webapp2.RequestHandler):
 class SoloHackerHandler(webapp2.RequestHandler):
     def post(self):
         solo_name = self.request.get("soloname")
-        self.response.write("I recieved a request to send ")
+        self.response.write("I received a request to send ")
         self.response.write(solo_name)
         self.response.write("With these traits: ")
         skills = []
         for key,value in self.request.POST.items():
             re_obj = re.search(r'^skill-(.*)',key)
             if re_obj and value == "on":
-                skills.append(re_obj.group(0)
-        print skills
+                skills.append(re_obj.group(0))
+        logging.info(skills)
 
 
 
