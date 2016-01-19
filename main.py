@@ -23,10 +23,11 @@ class MainHandler(webapp2.RequestHandler):
 
 class SoloHackerHandler(webapp2.RequestHandler):
     def post(self):
-        solo_name = self.request.get("soloname").text()
+        solo_name = self.request.get("soloname")
+        self.response.write("I recieved a request to send", solo_name+'s')
 
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    # ('/solohackerinput', SoloHackerHandler),
+    ('/solohackerinput', SoloHackerHandler),
 ], debug=True)
