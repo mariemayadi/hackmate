@@ -5,18 +5,26 @@
 </head>
 <body>
   <header>Welcome hackers</header>
+  {% for entry in contentArray %}
   <section id="groupsinfo">
-    <label for="groupname">Name</label>
-    <input type="text" name="groupname" id="groupname">
-    <label for="description">Name</label>
-    <input type="text" name="description" id="description">
-    <div id="skillsneeded">
-      <label for="skill-fe">Front End</label>
-      <input type="checkbox" id="skill-fe" name="skill-fe"></input>
-      <label for="skill-be">Back end</label>
-      <input type="checkbox" id="skill-be" name="skill-be"></input>
+    <div class="groupname">
+      {{ entry.groupname }}
     </div>
-    <input type="submit">
+    <div class="description">
+      <p>
+      {{ entry.description }}
+      </p>
+    </div>
+      <!-- <div id="skillsneeded">
+        <input type="checkbox" id="skill-fe" name="skill-fe">
+        <input type="checkbox" id="skill-be" name="skill-be">
+      </div> -->
   </section>
+  {% endfor %}
 </body>
 </html>
+
+<form action="">
+<input type="checkbox" name="vehicle" value="Bike">I have a bike<br>
+<input type="checkbox" name="vehicle" value="Car">I have a car
+</form>

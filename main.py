@@ -17,11 +17,34 @@
 import webapp2
 import logging
 import re
+import jinja2
+import os
+
+# We need to specify a Jinja environment. Configurations
+JINJA_ENVIRONMENT = jinja2.Environment (
+    # Loader: Where will my template be stored. Specify where the templates are.
+    # auto : is a safety measure. Avoid say entries like <script> tags
+    loader = jinja2.FileSystemLoader(os.path.dirname(__file__)),
+    extensions = ['jinja2.ext.autoescape'],
+    autoescape = True
+)
+
+GROUPS_ENTRIES = [
+{'groupname': "Jennifer",
+'description' : 'our project is exactly what you think it is. I will let you guess what that means.',
+'skills_needed' : [u'skill-fe']
+},
+{'groupname': "Mariem",
+'description' : 'Hackers matching..what else',
+'skills_needed' : [u'skill-be']
+}
+]
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         htmlContent = open('templates/solo-form.html').read()
         self.response.write(htmlContent)
+
 
 class SoloHackerHandler(webapp2.RequestHandler):
     def post(self):
@@ -36,9 +59,17 @@ class SoloHackerHandler(webapp2.RequestHandler):
                 skills.append(re_obj.group(0))
         logging.info(skills)
 
+class GroupInputHandler(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('templates/group.html')
+        template_values = {
+            "contentArray" : GROUPS_ENTRIES,
+        }
+        self.response.write(template.render(template_values))
 
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/solohackerinput', SoloHackerHandler),
+    ('/groupinput', GroupInputHandler),
 ], debug=True)
