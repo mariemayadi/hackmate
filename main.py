@@ -15,6 +15,7 @@
 # limitations under the License.
 #
 import webapp2
+import re
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -27,6 +28,13 @@ class SoloHackerHandler(webapp2.RequestHandler):
         self.response.write("I recieved a request to send ")
         self.response.write(solo_name)
         self.response.write("With these traits: ")
+        skills = []
+        for key,value in self.request.POST.items():
+            re_obj = re.search(r'^skill-(.*)',key)
+            if re_obj and value == "on":
+                skills.append(re_obj.group(0)
+        print skills
+
 
 
 app = webapp2.WSGIApplication([
