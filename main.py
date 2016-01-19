@@ -21,9 +21,9 @@ class MainHandler(webapp2.RequestHandler):
         htmlContent = open('templates/solo-form.html').read()
         self.response.write(htmlContent)
 
-# class SoloHackerHandler(webapp2.RequestHandler):
-#     def post(self):
-#         solo_name = self.request.get("")
+class SoloHackerHandler(webapp2.RequestHandler):
+    def post(self):
+        solo_name = self.request.get("soloname").text()
 
 
 app = webapp2.WSGIApplication([
