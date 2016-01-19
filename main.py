@@ -16,10 +16,18 @@
 #
 import webapp2
 
+
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write('Hello Jen it is Mariem! Let us work on the HackMate app!')
+        # send user to form site
+
+class SoloHackerHandler(webapp2.RequestHandler):
+    def post(self):
+
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/solohackerinput', SoloHackerHandler),
 ], debug=True)
