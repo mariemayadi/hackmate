@@ -60,12 +60,12 @@ class SoloHackerHandler(webapp2.RequestHandler):
         }
         # self.response.headers["Content-Type"] = "application/json"
         # self.response.write(json.dumps(solo_obj))
-        self.response.write("Name is: ")
-        self.response.write(solo_hacker_name)
-        self.response.write("Slack ID is: ")
-        self.response.write(solo_hacker_slackid)
-        self.response.write("Skills are: ")
-        self.response.write(solo_hacker_skills)
+        # self.response.write("Name is: ")
+        # self.response.write(solo_hacker_name)
+        # self.response.write("Slack ID is: ")
+        # self.response.write(solo_hacker_slackid)
+        # self.response.write("Skills are: ")
+        # self.response.write(solo_hacker_skills)
 
 
 class GroupInputHandler(webapp2.RequestHandler):
