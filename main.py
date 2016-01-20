@@ -19,6 +19,7 @@ import logging
 import re
 import jinja2
 import os
+import json
 
 # We need to specify a Jinja environment. Configurations
 JINJA_ENVIRONMENT = jinja2.Environment (
@@ -32,7 +33,7 @@ JINJA_ENVIRONMENT = jinja2.Environment (
 GROUPS_ENTRIES = [
 {'groupname': "Jennifer",
 'description' : 'our project is exactly what you think it is. I will let you guess what that means.',
-'skills_needed' : [u'skill-fe']
+'skills_needed' : [u'skill-fe', u'skill-be']
 },
 {'groupname': "Mariem",
 'description' : 'Hackers matching..what else',
@@ -48,16 +49,24 @@ class MainHandler(webapp2.RequestHandler):
 
 class SoloHackerHandler(webapp2.RequestHandler):
     def post(self):
-        solo_name = self.request.get("soloname")
-        self.response.write("I received a request to send ")
-        self.response.write(solo_name)
-        self.response.write("With these traits: ")
-        skills = []
-        for key,value in self.request.POST.items():
-            re_obj = re.search(r'^skill-(.*)',key)
-            if re_obj and value == "on":
-                skills.append(re_obj.group(0))
-        logging.info(skills)
+        logging.info("Inside the handler.")
+        solo_hacker_name = self.request.get("name")
+        solo_hacker_slackid = self.request.get("slackid")
+        solo_hacker_skills = self.request.get("skill")
+        solo_obj = {
+            "hacker_name": solo_hacker_name,
+            "slackID" : solo_hacker_slackid,
+            "hacker_skills": solo_hacker_skills,
+        }
+        # self.response.headers["Content-Type"] = "application/json"
+        # self.response.write(json.dumps(solo_obj))
+        self.response.write("Name is: ")
+        self.response.write(solo_hacker_name)
+        self.response.write("Slack ID is: ")
+        self.response.write(solo_hacker_slackid)
+        self.response.write("Skills are: ")
+        self.response.write(solo_hacker_skills)
+
 
 class GroupInputHandler(webapp2.RequestHandler):
     def get(self):
@@ -70,6 +79,6 @@ class GroupInputHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/solohackerinput', SoloHackerHandler),
+    ('/solo_hacker_info', SoloHackerHandler),
     ('/groupinput', GroupInputHandler),
 ], debug=True)

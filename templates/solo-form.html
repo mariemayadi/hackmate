@@ -2,20 +2,27 @@
 <html>
 <head>
   <title>Hackmate | Solo mode</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="javascript/script.js"></script>
 </head>
 <body>
   <header>Welcome hacker</header>
   <section id="solohackerform">
-    <form method="post" action="solohackerinput" enctype="multipart/form-data">
-      <label for="soloname">Name</label>
-      <input type="text" name="soloname" id="soloname">
+    <form id="soloform" enctype="multipart/form-data">
+      Name <input type="text" name="soloname" id="soloname" ><br>
+      Slack ID <input type="text" name="solo_slack_id" id="solo_slack_id"><br>
+      Skills List:
       <div id="skills_list">
-        <label for="skill-fe">Front End</label>
-        <input type="checkbox" id="skill-fe" name="skill-fe"></input>
-        <label for="skill-be">Back end</label>
-        <input type="checkbox" id="skill-be" name="skill-be"></input>
+        <!-- <label for="skill-fe">Front End</label> -->
+        <input type="checkbox" class="skill" id="skill-fe" name="skill-fe">Front End</input>
+        <!-- <label for="skill-be">Back end</label> -->
+        <input type="checkbox" class="skill" id="skill-be" name="skill-be">Back end</input>
+        <input type="checkbox" class="skill" id="skill-python" name="skill-be">Python Expert</input>
+        <input type="checkbox" class="skill" id="skill-java" name="skill-be">Java Guru</input>
+        <input type="checkbox" class="skill" id="skill-html" name="skill-be">HTML Wizard</input>
+        <input type="checkbox" class="skill" id="skill-css" name="skill-be">CSS Pro</input>
       </div>
-      <input type="submit">
+      <button id="submit_button">Submit</button>
     </form>
   </section>
 </body>
