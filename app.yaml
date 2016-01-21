@@ -9,6 +9,12 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
+- url: /mdl
+  static_dir: mdl
+
+- url: /css
+  static_dir: css
+
 - url: /javascript
   static_dir: javascript
 
