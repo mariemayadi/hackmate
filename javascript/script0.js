@@ -1,23 +1,23 @@
 $(document).ready(function () {
 
-  $("#btn").click(function (e) {
-    e.preventDefault()
-    // var parent_element = $(e.currentTarget.parentElement);
+  $("#submit_button").click(function (e) {
+    var parent_element = $(e.currentTarget.parentElement);
     // get solo hacker's name
     // var solo_hacker_name = parent_element.find("#soloname").val();
     // console.log("solo_hacker_name");
     // console.log(solo_hacker_name);
-    // // get solo hacker's Slack ID
-    // var solo_hacker_slackid = parent_element.find("#solo_slack_id").val();
-    // console.log("solo_hacker_slackid");
-    // console.log(solo_hacker_slackid);
+    
+    // get solo hacker's Slack ID
+    var solo_hacker_slackid = parent_element.find("#solo_slack_id").val();
+    console.log("solo_hacker_slackid");
+    console.log(solo_hacker_slackid);
     // get solo hacker's list of skills
     var skills_list = [];
 
-    // console.log('$("#soloname").val()')
-    // console.log($("#soloname").val());
+    console.log('$("#soloname").val()')
+    console.log($("#soloname").val());
     var solo_hacker_name = $("#soloname").val()
-    var solo_hacker_slackid = $("#solo_slack_id").val()
+
 
 
     $(".skill").each( function() {
@@ -39,6 +39,7 @@ $(document).ready(function () {
     }).done( function(data) {
       console.log("AJAX finished.");
     });
+
   });
 
 });

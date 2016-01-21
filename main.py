@@ -20,6 +20,8 @@ import re
 import jinja2
 import os
 import json
+from models import Hacker
+from models import Group
 
 # We need to specify a Jinja environment. Configurations
 JINJA_ENVIRONMENT = jinja2.Environment (
@@ -57,11 +59,22 @@ class SoloHackerHandler(webapp2.RequestHandler):
         solo_hacker_name = self.request.get("name")
         solo_hacker_slackid = self.request.get("slackid")
         solo_hacker_skills = self.request.get("skill")
+        logging.warning(solo_hacker_skills)
         solo_obj = {
             "hacker_name": solo_hacker_name,
             "slackID" : solo_hacker_slackid,
             "hacker_skills": solo_hacker_skills,
         }
+
+
+        new_hacker = Hacker (
+            hacker_name =  self.request.get("name"),
+            slack_id =  self.request.get("slackid"),
+            skills = self.request.get("skill")
+        )
+        new_hacker.put()
+        self.redirect('/groupinput')
+
         # will be working on databases tomorrow
         # self.response.headers["Content-Type"] = "application/json"
         # self.response.write(json.dumps(solo_obj))
