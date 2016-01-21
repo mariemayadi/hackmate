@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HackMate | Group Mode</title>
+</head>
+<body>
+  <header>Welcome Hackers</header>
+  {% for entry in contentArray %}
+  <section id="groupsinfo">
+    <div class="groupname">
+      {{ entry.groupname }}
+    </div>
+    <div class="description">
+      <p>
+      {{ entry.description }}
+      </p>
+    </div>
+    {% for skill in entry.skills_needed %}
+      <li>{{skill}}</li>
+    {% endfor %}
+  </section>
+  {% endfor %}
+</body>
+</html>

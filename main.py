@@ -33,19 +33,23 @@ JINJA_ENVIRONMENT = jinja2.Environment (
 GROUPS_ENTRIES = [
 {'groupname': "Jennifer",
 'description' : 'our project is exactly what you think it is. I will let you guess what that means.',
-'skills_needed' : [u'skill-fe', u'skill-be']
+'skills_needed' : ['Back End', 'Java Master']
 },
 {'groupname': "Mariem",
 'description' : 'Hackers matching..what else',
-'skills_needed' : [u'skill-be']
+'skills_needed' : ['Front End', 'HTML Wizard']
 }
 ]
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        htmlContent = open('templates/solo-form.html').read()
-        self.response.write(htmlContent)
+        main_page_content = open('mainpage.html').read()
+        self.response.write(main_page_content)
 
+class SoloFormHandler(webapp2.RequestHandler):
+    def get(self):
+        solo_form = open('templates/solo-form.html').read()
+        self.response.write(solo_form)
 
 class SoloHackerHandler(webapp2.RequestHandler):
     def post(self):
@@ -58,19 +62,14 @@ class SoloHackerHandler(webapp2.RequestHandler):
             "slackID" : solo_hacker_slackid,
             "hacker_skills": solo_hacker_skills,
         }
+        # will be working on databases tomorrow
         # self.response.headers["Content-Type"] = "application/json"
         # self.response.write(json.dumps(solo_obj))
-        # self.response.write("Name is: ")
-        # self.response.write(solo_hacker_name)
-        # self.response.write("Slack ID is: ")
-        # self.response.write(solo_hacker_slackid)
-        # self.response.write("Skills are: ")
-        # self.response.write(solo_hacker_skills)
 
 
 class GroupInputHandler(webapp2.RequestHandler):
     def get(self):
-        template = JINJA_ENVIRONMENT.get_template('templates/group.html')
+        template = JINJA_ENVIRONMENT.get_template('templates/team_template.html')
         template_values = {
             "contentArray" : GROUPS_ENTRIES,
         }
@@ -79,6 +78,7 @@ class GroupInputHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
+    ('/solo_hacker_form', SoloFormHandler),
     ('/solo_hacker_info', SoloHackerHandler),
     ('/groupinput', GroupInputHandler),
 ], debug=True)

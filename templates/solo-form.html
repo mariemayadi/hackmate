@@ -2,6 +2,12 @@
 <html>
 <head>
   <title>HackMate | Solo mode</title>
+  <!-- <link rel="stylesheet" href="../mdl/material.min.css">
+  <script src="../mdl/material.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="javascript/script.js"></script>
 </head>
@@ -10,12 +16,30 @@
   <section id="solohackerform">
     <form id="soloform" enctype="multipart/form-data">
 
-      Name <input type="text" name="soloname" id="soloname" ><br>
+      <!-- Name <input type="text" name="soloname" id="soloname" ><br> -->
+      <form action="#">
+        <div class="mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" type="text" id="soloname" name= "soloname">
+          <label class="mdl-textfield__label" for="soloname">Name...</label>
+        </div>
+      </form>
 
-      Slack ID <input type="text" name="solo_slack_id" id="solo_slack_id"><br>
+      <!-- Slack ID <input type="text" name="solo_slack_id" id="solo_slack_id"><br> -->
+      <form action="#">
+        <div class="mdl-textfield mdl-js-textfield">
+          <input class="mdl-textfield__input" type="text" id="solo_slack_id" name= "solo_slack_id">
+          <label class="mdl-textfield__label" for="solo_slack_id">Slack ID...</label>
+        </div>
+      </form>
 
       Skills List:
       <div id="skills_list">
+
+        <!-- trying to upgrade to the nicer checkbox...got to work out the kinks in javascript file -->
+        <!-- <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="skill-fe">
+          <input type="checkbox" id="skill-fe" class="mdl-checkbox__input" class="skill">
+          <span class="mdl-checkbox__label">Front End</span>
+        </label> -->
 
         <input type="checkbox" class="skill" id="skill-fe" name="skill-fe">
         <label for="skill-fe">Front End</label>
@@ -36,7 +60,12 @@
         <label for="skill-css">CSS Pro</label>
 
       </div>
-      <button id="submit_button">Submit</button>
+      <!-- <button id="submit_button">Submit</button> -->
+      <!-- Raised button -->
+      <button class="mdl-button mdl-js-button mdl-button--raised" id="submit_button">
+        Submit
+      </button>
+
     </form>
   </section>
 </body>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hackmate | Group mode</title>
+  <title>HackMate | Group Mode</title>
 </head>
 <body>
-  <header>Welcome hackers</header>
+  <header>Welcome Hackers</header>
   {% for entry in contentArray %}
   <section id="groupsinfo">
     <div class="groupname">
@@ -15,12 +15,11 @@
       {{ entry.description }}
       </p>
     </div>
-
     {% for skill in entry.skills_needed %}
       <!-- {% if skill == u'skill-fe' %} -->
           <input type="checkbox" id="skill-fe" name="skill-fe" disabled="disabled" {{ ("checked") }}>Front-end<br>
       <!-- {% endif %} -->
-      <input type="checkbox" id="skill-be" name="skill-be" disabled="disabled" {{ ("checked") }}>Back-end
+        <input type="checkbox" id="skill-be" name="skill-be" disabled="disabled" {{ ("checked") }}>Back-end
     {% endfor %}
   </section>
   {% endfor %}
