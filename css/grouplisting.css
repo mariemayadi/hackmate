@@ -1,0 +1,10 @@
+#groupsinfo, h4{
+  position: relative;
+  left: 50px;
+}
+
+h4 {
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}

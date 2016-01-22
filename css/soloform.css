@@ -21,3 +21,8 @@
       -ms-flex-align: stretch;
           align-items: stretch;
 }
+
+#solohackerform {
+  position: relative;
+  left: 50px;
+}

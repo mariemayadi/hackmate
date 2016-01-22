@@ -1,28 +1,44 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>HackMate | Available Groups</title>
-  <link rel="stylesheet" href="/mdl/material.min.css">
-  <script src="/mdl/material.min.js"></script>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
 <body>
-  <header>Scroll down below to find your perfect match(or the closest thing)!</header>
+  <h4>Scroll down below to find your perfect match (or the closest thing)!</h4>
   {% for entry in contentArray %}
   <section id="groupsinfo">
-    <div class="groupname">
-      {{ entry.groupname }}
+    <!-- Wide card with share menu button -->
+    <style>
+    .demo-card-wide.mdl-card {
+      width: 512px;
+    }
+    .demo-card-wide > .mdl-card__title {
+      color: #fff;
+      height: 176px;
+      /*add an option for users/groups to upload an image that represents the goal of the project?*/
+      background: url('../images/code-image2.jpg') center / cover;
+    }
+    .demo-card-wide > .mdl-card__menu {
+      color: #fff;
+    }
+    </style>
+
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text" class="groupname">{{ entry.groupname }}</h2>
+      </div>
+      <div class="mdl-card__supporting-text" class="description">
+        {{ entry.description }}
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          Connect
+        </a>
+      </div>
+      <div class="mdl-card__menu" class="skills_needed_list">
+        Looking for...
+        {% for skill in entry.skills_needed %}
+          <li>{{skill}}</li>
+        {% endfor %}
+      </div>
     </div>
-    <div class="description">
-      <p>
-      {{ entry.description }}
-      </p>
-    </div>
-    {% for skill in entry.skills_needed %}
-      <li>{{skill}}</li>
-    {% endfor %}
+    <br>
+    <br>
   </section>
   {% endfor %}
 </body>

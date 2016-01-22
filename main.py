@@ -46,11 +46,24 @@ GROUPS_ENTRIES = [
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
+        header_template = JINJA_ENVIRONMENT.get_template('templates/header.html')
+        header_values = {}
+        header_values["page_title"] = "Welcome to HackMate"
+        header_values["link_to_stylesheet"] = "../css/mainpage.css"
+        self.response.write(header_template.render(header_values))
+
         main_page_content = open('mainpage.html').read()
         self.response.write(main_page_content)
 
 class SoloFormHandler(webapp2.RequestHandler):
     def get(self):
+        header_template = JINJA_ENVIRONMENT.get_template('templates/header.html')
+        header_values = {}
+        header_values["page_title"] = "HackMate | Solo Mode"
+        header_values["link_to_stylesheet"] = "../css/soloform.css"
+        header_values["link_to_script"] = "../javascript/script.js"
+        self.response.write(header_template.render(header_values))
+
         solo_form = open('templates/solo-form.html').read()
         self.response.write(solo_form)
 
@@ -103,6 +116,13 @@ class GroupInputHandler(webapp2.RequestHandler):
         #     skills = json.loads(self.request.get("skill"))
         # )
         # new_hacker.put()
+
+        # load the header template first
+        header_template = JINJA_ENVIRONMENT.get_template('templates/header.html')
+        header_values = {}
+        header_values["page_title"] = "HackMate | Available Groups"
+        header_values["link_to_stylesheet"] = "../css/grouplisting.css"
+        self.response.write(header_template.render(header_values))
 
         template = JINJA_ENVIRONMENT.get_template('templates/team_template.html')
         template_values = {
