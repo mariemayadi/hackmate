@@ -22,6 +22,7 @@ import os
 import json
 from models import Hacker
 from models import Group
+from google.appengine.ext import ndb
 
 # We need to specify a Jinja environment. Configurations
 JINJA_ENVIRONMENT = jinja2.Environment (
@@ -55,7 +56,7 @@ class SoloFormHandler(webapp2.RequestHandler):
 
 class SoloHackerHandler(webapp2.RequestHandler):
     def post(self):
-        logging.info("Inside the handler.")
+        logging.info("Inside the DB handler stufff now in group.")
         solo_hacker_name = self.request.get("name")
         solo_hacker_slackid = self.request.get("slackid")
         solo_hacker_skills = self.request.get("skill")
@@ -70,10 +71,10 @@ class SoloHackerHandler(webapp2.RequestHandler):
         new_hacker = Hacker (
             hacker_name =  self.request.get("name"),
             slack_id =  self.request.get("slackid"),
-            skills = self.request.get("skill")
+            skills = json.loads(self.request.get("skill"))
         )
         new_hacker.put()
-        self.redirect('/groupinput')
+        # self.redirect('/groupinput')
 
         # will be working on databases tomorrow
         # self.response.headers["Content-Type"] = "application/json"
@@ -81,7 +82,29 @@ class SoloHackerHandler(webapp2.RequestHandler):
 
 
 class GroupInputHandler(webapp2.RequestHandler):
+    # def get(self):
     def get(self):
+
+        # logging.info("Inside the DB handler stufff now in group.")
+        # solo_hacker_name = self.request.get("name")
+        # solo_hacker_slackid = self.request.get("slackid")
+        # solo_hacker_skills = self.request.get("skill")
+        # logging.warning(solo_hacker_skills)
+        # solo_obj = {
+        #     "hacker_name": solo_hacker_name,
+        #     "slackID" : solo_hacker_slackid,
+        #     "hacker_skills": solo_hacker_skills,
+        # }
+        #
+        #
+        # new_hacker = Hacker (
+        #     hacker_name =  self.request.get("name"),
+        #     slack_id =  self.request.get("slackid"),
+        #     skills = json.loads(self.request.get("skill"))
+        # )
+        # new_hacker.put()
+
+
         template = JINJA_ENVIRONMENT.get_template('templates/team_template.html')
         template_values = {
             "contentArray" : GROUPS_ENTRIES,
