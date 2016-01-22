@@ -6,69 +6,73 @@
   <script src="../mdl/material.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
   <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+  <link rel="stylesheet" href="css/soloform.css">
   <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="javascript/script.js"></script>
 </head>
 <body>
-  <header>Welcome hacker</header>
+  <!-- <header>Welcome hacker</header> -->
   <section id="solohackerform">
-    <form id="soloform" enctype="multipart/form-data">
 
-      <!-- Name <input type="text" name="soloname" id="soloname" ><br> -->
-      <!-- <form action="#"> -->
-        <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="soloname" name= "soloname">
-          <label class="mdl-textfield__label" for="soloname">Name...</label>
-        </div>
-        <br>
-      <!-- </form> -->
 
-      <!-- Slack ID <input type="text" name="solo_slack_id" id="solo_slack_id"><br> -->
-      <!-- <form action="#"> -->
-        <div class="mdl-textfield mdl-js-textfield">
-          <input class="mdl-textfield__input" type="text" id="solo_slack_id" name= "solo_slack_id">
-          <label class="mdl-textfield__label" for="solo_slack_id">Slack ID...</label>
-        </div>
-        <br>
-      <!-- </form> -->
+    <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                <!-- <svg fill="currentColor" width="200px" height="200px" viewBox="0 0 1 1" class="demo-chart mdl-cell mdl-cell--4-col mdl-cell--3-col-desktop">
+                  <use xlink:href="#piechart" mask="url(#piemask)">
+                  <text x="0.5" y="0.5" font-family="Roboto" font-size="0.3" fill="#888" text-anchor="middle" dy="0.1">82<tspan font-size="0.2" dy="-0.07">%</tspan></text>
+                </svg> -->
 
-      Skills List:
-      <div id="skills_list">
+                <form id="soloform" enctype="multipart/form-data">
+                    <h1 class="mdl-card__title-text">Looking for a team? ... you're in the right place</h1>
+                    <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" id="soloname" name= "soloname">
+                          <label class="mdl-textfield__label" for="soloname">Name...</label>
+                    </div>
+                    <br>
+                    <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" id="solo_slack_id" name= "solo_slack_id">
+                          <label class="mdl-textfield__label" for="solo_slack_id">Slack ID...</label>
+                    </div>
+                    <br>
+                    Skills List:
+                    <div id="skills_list">
+                          <input type="checkbox" class="skill" id="skill-fe" name="skill-fe">
+                          <label for="skill-fe">Front End</label>
+                          <br>
 
-        <!-- trying to upgrade to the nicer checkbox...got to work out the kinks in javascript file -->
-        <!-- <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="skill-fe">
-          <input type="checkbox" id="skill-fe" class="mdl-checkbox__input" class="skill">
-          <span class="mdl-checkbox__label">Front End</span>
-        </label> -->
+                          <input type="checkbox" class="skill" id="skill-be" name="skill-be">
+                          <label for="skill-be">Back End</label>
+                          <br>
 
-        <input type="checkbox" class="skill" id="skill-fe" name="skill-fe">
-        <label for="skill-fe">Front End</label>
+                          <input type="checkbox" class="skill" id="skill-python" name="skill-python">
+                          <label for="skill-python">Python Expert</label>
+                          <br>
 
-        <input type="checkbox" class="skill" id="skill-be" name="skill-be">
-        <label for="skill-be">Back End</label>
+                          <input type="checkbox" class="skill" id="skill-java" name="skill-java">
+                          <label for="skill-java">Java Guru</label>
+                          <br>
 
-        <input type="checkbox" class="skill" id="skill-python" name="skill-python">
-        <label for="skill-python">Python Expert</label>
+                          <input type="checkbox" class="skill" id="skill-html" name="skill-html">
+                          <label for="skill-html">HTML Wizard</label>
+                          <br>
 
-        <input type="checkbox" class="skill" id="skill-java" name="skill-java">
-        <label for="skill-java">Java Guru</label>
+                          <input type="checkbox" class="skill" id="skill-css" name="skill-css">
+                          <label for="skill-css">CSS Pro</label>
+                          <br>
+                          <br>
 
-        <input type="checkbox" class="skill" id="skill-html" name="skill-html">
-        <label for="skill-html">HTML Wizard</label>
+                  </div>
+                  <div>
+                    <br>
+                  <button class="mdl-button mdl-js-button mdl-button--raised" id="btn">Submit</button>
+                </div>
 
-        <input type="checkbox" class="skill" id="skill-css" name="skill-css">
-        <label for="skill-css">CSS Pro</label>
+              </form>
 
-      </div>
-      <!-- <button id="submit_button">Submit</button> -->
-      <!-- Raised button -->
-      <button class="mdl-button mdl-js-button mdl-button--raised" id="btn">
-        Submit
-      </button>
+              </div>
 
-    </form>
+
   </section>
 </body>
 </html>
