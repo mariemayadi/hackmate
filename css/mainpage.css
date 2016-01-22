@@ -1,3 +1,7 @@
 nav, a {
-  float: right,
+  float: right;
+}
+
+@media screen and (min-width: 500px) {
+    .resizeable{font-size: 3em}
 }

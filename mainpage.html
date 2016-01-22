@@ -5,21 +5,20 @@
   <link rel="stylesheet" href="/mdl/material.min.css">
   <script src="/mdl/material.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/css/mainpage.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<!-- Uses a transparent header that draws on top of the layout's background -->
 <style>
 .demo-layout-transparent {
-  background: url('/images/code-wallpaper-4.png') center / cover;
+  background: url('/images/maxresdefault.jpg') center / cover;
 }
 .demo-layout-transparent .mdl-layout__header,
 .demo-layout-transparent .mdl-layout__drawer-button {
-  /* This background is dark, so we set text to white. Use 87% black instead if
-     your background is light. */
   color: white;
 }
 </style>
-
 <div class="demo-layout-transparent mdl-layout mdl-js-layout">
   <header class="mdl-layout__header mdl-layout__header--transparent">
     <div class="mdl-layout__header-row">
@@ -38,15 +37,15 @@
       </nav>
     </div>
   </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">HACKAWAY</span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="/login">Login</a>
-      <a class="mdl-navigation__link" href="/solo_hacker_form">Solo Mode</a>
-      <a class="mdl-navigation__link" href="/group_form_info">Group Mode</a>
-      <a class="mdl-navigation__link" href="/solo_hackers">Free Solo Hackers</a>
-      <a class="mdl-navigation__link" href="/groupinput">See Available Groups</a>
-      <a class="mdl-navigation__link" href="/login">Logout</a>
+  <div class="mdl-layout__drawer" class="resizeable">
+    <span class="mdl-layout-title" class="resizeable">HackMate</span>
+    <nav class="mdl-navigation" class="resizeable">
+      <a class="mdl-navigation__link" class="resizeable" href="/login">Login</a>
+      <a class="mdl-navigation__link" class="resizeable" href="/solo_hacker_form">Solo Mode</a>
+      <a class="mdl-navigation__link" class="resizeable" href="/group_form_info">Group Mode</a>
+      <a class="mdl-navigation__link" class="resizeable" href="/solo_hackers">Free Solo Hackers</a>
+      <a class="mdl-navigation__link" class="resizeable" href="/groupinput">See Available Groups</a>
+      <a class="mdl-navigation__link" class="resizeable" href="/login">Logout</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
