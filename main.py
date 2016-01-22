@@ -34,6 +34,7 @@ JINJA_ENVIRONMENT = jinja2.Environment (
 )
 GROUPS_ENTRIES = []
 
+
 # GROUPS_ENTRIES = [
 # {'groupname': "Jennifer",
 # 'description' : 'our project is exactly what you think it is. I will let you guess what that means.',
@@ -71,19 +72,11 @@ class SoloFormHandler(webapp2.RequestHandler):
 class SoloHackerHandler(webapp2.RequestHandler):
     def post(self):
 
-        GROUPS_ENTRIES.append({'groupname': 'Jennifer','description' : 'our project is exactly what you think it is. I will let you guess what that means.','skills_needed' : ['Back End', 'Java Master']})
-
-        logging.info("Inside the DB handler stufff now in group.")
-        solo_hacker_name = self.request.get("name")
-        solo_hacker_slackid = self.request.get("slackid")
-        solo_hacker_skills = self.request.get("skill")
-        logging.warning(solo_hacker_skills)
-        solo_obj = {
-            "hacker_name": solo_hacker_name,
-            "slackID" : solo_hacker_slackid,
-            "hacker_skills": solo_hacker_skills,
-        }
-
+        # logging.info("Inside the DB handler stufff now in group.")
+        # solo_hacker_name = self.request.get("name")
+        # solo_hacker_slackid = self.request.get("slackid")
+        solo_hacker_skills = json.loads(self.request.get("skill"))
+        # logging.warning(solo_hacker_skills)
 
         new_hacker = Hacker (
             hacker_name =  self.request.get("name"),
@@ -92,31 +85,19 @@ class SoloHackerHandler(webapp2.RequestHandler):
         )
         new_hacker.put()
 
+        groups_matching = Group.query(Group.skills_needed.IN(solo_hacker_skills))
+
+        for matchedgroup in groups_matching :
+            logging.warning(matchedgroup)
+            GROUPS_ENTRIES.append({'groupname': matchedgroup.group_name,'description' : matchedgroup.description,'skills_needed' : matchedgroup.skills_needed})
+
+
 
 
 
 class GroupInputHandler(webapp2.RequestHandler):
     # def get(self):
     def get(self):
-
-        # logging.info("Inside the DB handler stufff now in group.")
-        # solo_hacker_name = self.request.get("name")
-        # solo_hacker_slackid = self.request.get("slackid")
-        # solo_hacker_skills = self.request.get("skill")
-        # logging.warning(solo_hacker_skills)
-        # solo_obj = {
-        #     "hacker_name": solo_hacker_name,
-        #     "slackID" : solo_hacker_slackid,
-        #     "hacker_skills": solo_hacker_skills,
-        # }
-        #
-        #
-        # new_hacker = Hacker (
-        #     hacker_name =  self.request.get("name"),
-        #     slack_id =  self.request.get("slackid"),
-        #     skills = json.loads(self.request.get("skill"))
-        # )
-        # new_hacker.put()
 
         # load the header template first
         header_template = JINJA_ENVIRONMENT.get_template('templates/header.html')
@@ -125,6 +106,7 @@ class GroupInputHandler(webapp2.RequestHandler):
         header_values["link_to_stylesheet"] = "../css/grouplisting.css"
         self.response.write(header_template.render(header_values))
 
+        logging.info(GROUPS_ENTRIES)
         template = JINJA_ENVIRONMENT.get_template('templates/team_template.html')
         template_values = {
             "contentArray" : GROUPS_ENTRIES,
