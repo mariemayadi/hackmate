@@ -7,32 +7,48 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="/css/mainpage.css">
 </head>
-<body>
-  <header id="mainheader">
-    <h1>Welcome to HackMate</h1>
-  </header>
-  <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon">
-    <i class="material-icons">more_vert</i>
-  </button>
+<!-- Uses a transparent header that draws on top of the layout's background -->
+<style>
+.demo-layout-transparent {
+  background: url('/images/code-wallpaper-4.png') center / cover;
+}
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button {
+  /* This background is dark, so we set text to white. Use 87% black instead if
+     your background is light. */
+  color: white;
+}
+</style>
 
-  <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
-      for="demo-menu-lower-left">
-    <li class="mdl-menu__item"><a href="/login">Login</a></li>
-    <li class="mdl-menu__item"><a href="/solo_hacker_form">Solo Mode</a></li>
-    <li class="mdl-menu__item"><a href="/group_hackers_info">Group Mode</a></li>
-    <li class="mdl-menu__item"><a href="/solo_hackers_list">Scroll through Solo Hackers</a></li>
-    <li class="mdl-menu__item"><a href="/groupinput">Scroll through Group Hackers</a></li>
-    <li class="mdl-menu__item"><a href="/logout">Logout</a></li>
-  </ul>
-  <nav>
-    <a href="/login">Login</a>
-    <a href="/solo_hacker_form">Solo Mode</a>
-    <a href="/group_hackers_info">Group Mode</a>
-    <!-- Have a list of solo hackers for teams to look at -->
-    <a href="/solo_hackers_list">Scroll through Solo Hackers</a>
-    <!-- Have a list of groups with descriptions for solo hackers to look at -->
-    <a href="/groupinput">Scroll through Group Hackers</a>
-    <a href="/logout">Logout</a>
-  </nav>
-</body>
-</html>
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Welcome to HackMate</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="/login">Login</a>
+        <a class="mdl-navigation__link" href="/solo_hacker_form">Solo Mode</a>
+        <a class="mdl-navigation__link" href="/group_form_info">Group Mode</a>
+        <a class="mdl-navigation__link" href="/solo_hackers">Free Solo Hackers</a>
+        <a class="mdl-navigation__link" href="/groupinput">See Available Groups</a>
+        <a class="mdl-navigation__link" href="/login">Logout</a>
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">HACKAWAY</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="/login">Login</a>
+      <a class="mdl-navigation__link" href="/solo_hacker_form">Solo Mode</a>
+      <a class="mdl-navigation__link" href="/group_form_info">Group Mode</a>
+      <a class="mdl-navigation__link" href="/solo_hackers">Free Solo Hackers</a>
+      <a class="mdl-navigation__link" href="/groupinput">See Available Groups</a>
+      <a class="mdl-navigation__link" href="/login">Logout</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+  </main>
+</div>
