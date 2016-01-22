@@ -32,17 +32,18 @@ JINJA_ENVIRONMENT = jinja2.Environment (
     extensions = ['jinja2.ext.autoescape'],
     autoescape = True
 )
+GROUPS_ENTRIES = []
 
-GROUPS_ENTRIES = [
-{'groupname': "Jennifer",
-'description' : 'our project is exactly what you think it is. I will let you guess what that means.',
-'skills_needed' : ['Back End', 'Java Master']
-},
-{'groupname': "Mariem",
-'description' : 'Hackers matching..what else',
-'skills_needed' : ['Front End', 'HTML Wizard']
-}
-]
+# GROUPS_ENTRIES = [
+# {'groupname': "Jennifer",
+# 'description' : 'our project is exactly what you think it is. I will let you guess what that means.',
+# 'skills_needed' : ['Back End', 'Java Master']
+# },
+# {'groupname': "Mariem",
+# 'description' : 'Hackers matching..what else',
+# 'skills_needed' : ['Front End', 'HTML Wizard']
+# }
+# ]
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -69,6 +70,9 @@ class SoloFormHandler(webapp2.RequestHandler):
 
 class SoloHackerHandler(webapp2.RequestHandler):
     def post(self):
+
+        GROUPS_ENTRIES.append({'groupname': 'Jennifer','description' : 'our project is exactly what you think it is. I will let you guess what that means.','skills_needed' : ['Back End', 'Java Master']})
+
         logging.info("Inside the DB handler stufff now in group.")
         solo_hacker_name = self.request.get("name")
         solo_hacker_slackid = self.request.get("slackid")
@@ -87,11 +91,8 @@ class SoloHackerHandler(webapp2.RequestHandler):
             skills = json.loads(self.request.get("skill"))
         )
         new_hacker.put()
-        # self.redirect('/groupinput')
 
-        # will be working on databases tomorrow
-        # self.response.headers["Content-Type"] = "application/json"
-        # self.response.write(json.dumps(solo_obj))
+
 
 
 class GroupInputHandler(webapp2.RequestHandler):
