@@ -104,7 +104,6 @@ class GroupInputHandler(webapp2.RequestHandler):
         # )
         # new_hacker.put()
 
-
         template = JINJA_ENVIRONMENT.get_template('templates/team_template.html')
         template_values = {
             "contentArray" : GROUPS_ENTRIES,
